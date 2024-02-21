@@ -52,6 +52,7 @@ def _handle_edge_cases(to_say, upload_target):
 
 
 def tts(to_say, top_p, guidance, toggle, preset_dropdown, upload_target):
+    upload_target = upload_target.name if upload_target else None
     d_top_p = denormalise_top_p(top_p)
     d_guidance = denormalise_guidance(guidance)
 
@@ -156,9 +157,9 @@ with gr.Blocks(title="TTS by MetaVoice") as demo:
                         gr.Audio(value=path, label=label)
 
             with gr.Row(visible=False) as row_2:
-                upload_target = gr.Audio(
-                    sources=["upload"],
-                    type="filepath",
+                upload_target = gr.File(
+                    #sources=["upload"],
+                    type="file",
                     label="Upload a clean sample to clone. Sample should contain 1 speaker, be between 30-90 seconds and not contain background noise.",
                 )
 
@@ -182,7 +183,7 @@ with gr.Blocks(title="TTS by MetaVoice") as demo:
     )
 
 
-demo.queue(default_concurrency_limit=2)
+#demo.queue(default_concurrency_limit=2)
 demo.launch(
-    favicon_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets/favicon.ico"),
+   favicon_path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets/favicon.ico"),
 )

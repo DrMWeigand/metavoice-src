@@ -603,7 +603,7 @@ class SamplingControllerConfig:
     """Path to speaker reference file. Min. 30s of audio required. Supports both local paths & public URIs. Audio formats: wav, flac & mp3"""
 
     text: str = (
-        "This is a demo of text to speech by MetaVoice-1B, an open-source foundational audio model by MetaVoice."
+        "In the heart of the bustling city, amidst the constant hum of daily life, there lies a quaint little park. This park, a verdant oasis, offers a tranquil escape from the relentless pace of the urban environment. With its lush greenery, colorful flower beds, and meandering pathways, it invites visitors to step away from their routines and immerse themselves in the beauty of nature."
     )
     """Text to synthesise."""
 

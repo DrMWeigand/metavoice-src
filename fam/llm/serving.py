@@ -32,6 +32,9 @@ logger = logging.getLogger(__name__)
 ## Setup FastAPI server.
 app = fastapi.FastAPI()
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
 
 @dataclass
 class ServingConfig:
@@ -111,7 +114,7 @@ async def text_to_speech(req: Request):
                 enhancer=GlobalState.enhancer,
                 first_stage_ckpt_path=None,
                 second_stage_ckpt_path=None,
-                guidance_scale=tts_req.guidance,
+                guidance_scale=(tts_req.guidance,3.0),
                 max_new_tokens=GlobalState.config.max_new_tokens,
                 temperature=GlobalState.config.temperature,
                 top_k=tts_req.top_k,
