@@ -119,7 +119,7 @@ async def text_to_speech(req: Request):
                 enhancer=GlobalState.enhancer,
                 first_stage_ckpt_path=None,
                 second_stage_ckpt_path=None,
-                guidance_scale=(tts_req.guidance,3.0),
+                guidance_scale=tts_req.guidance,
                 max_new_tokens=GlobalState.config.max_new_tokens,
                 temperature=GlobalState.config.temperature,
                 top_k=tts_req.top_k,
